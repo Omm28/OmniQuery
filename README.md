@@ -1,24 +1,90 @@
 # OmniQuery
 
-AI-powered web search agent built using a local LLM stack (Ollama + LangGraph) with a chat-based interface and persistent conversations.
+> AI-powered web search agent built with a local LLM stack (Ollama + LangGraph), featuring persistent conversations, modular architecture, and a graph-based execution pipeline.
 
 ---
 
 ## 🚀 Overview
 
-OmniQuery is a full-stack AI application that allows users to interact with a web search agent through a chat interface. It leverages local LLMs for query processing and uses a modular backend design to support extensibility and future enhancements.
-The system uses a graph-based execution model (LangGraph) to orchestrate query processing through modular nodes and middleware.
+OmniQuery is a full-stack AI application that enables users to interact with a web search agent through a chat interface. It leverages local LLMs for query understanding and response generation, while maintaining a clean, modular backend designed for extensibility and scalability.
+
+The system is built around a **graph-based execution model**, where each user query flows through structured nodes, tools, and middleware for processing.
+
+---
+
+## 🧠 Architecture
+
+OmniQuery uses a **LangGraph-powered workflow** to orchestrate execution:
+
+- **Nodes** → Handle individual steps in query processing
+- **Tools** → External capabilities (e.g., search)
+- **Middleware** → Intercepts and modifies requests (filters, transformations)
+- **State Management** → Maintains conversation context across steps
+
+### 🔄 High-Level Flow
+
+```
+User Input
+   ↓
+Middleware (processing / filtering)
+   ↓
+LangGraph Execution (nodes + tools)
+   ↓
+LLM Response Generation
+   ↓
+Database Persistence (SQLite)
+   ↓
+Frontend Rendering
+```
+
+This design enables:
+
+- Clear separation of concerns
+- Easy feature extension (e.g., anonymization, auth layers)
+- Scalable transition into agent-based systems
 
 ---
 
 ## ✨ Current Features
 
-- Chat-based interface for interacting with the agent
-- Conversation persistence using SQLite
-- Sidebar with chat history and session loading
-- FastAPI backend for handling API requests
-- Modular architecture (nodes, tools, middleware structure)
-- Frontend built with HTML, CSS, and Vanilla JavaScript
+- 💬 Chat-based interface for interacting with the agent
+- 🗂️ Conversation persistence using SQLite
+- 📜 Sidebar with chat history and session loading
+- ⚡ FastAPI backend for API handling
+- 🧩 Modular architecture (nodes, tools, middleware)
+- 🌐 Frontend built with HTML, CSS, and Vanilla JavaScript
+
+---
+
+## 🔌 API Endpoints
+
+### Chat Interaction
+
+**POST /chat**
+
+Request:
+
+```
+{
+  "message": "What is AI?"
+}
+```
+
+Response:
+
+```
+{
+  "response": "Artificial Intelligence refers to..."
+}
+```
+
+---
+
+### Conversation History
+
+**GET /chat/{conversation_id}**
+
+Returns stored messages for a given conversation.
 
 ---
 
@@ -39,23 +105,56 @@ OmniQuery/
 │── app/                # Core backend logic
 │   ├── middleware/     # Middleware (filters, processing layers)
 │   ├── tools/          # External tools (e.g., search)
-│   ├── main.py         # FastAPI entry point
 │   ├── graph.py        # LangGraph workflow
+│   ├── nodes.py        # Execution nodes
+│   ├── state.py        # State management
+│   ├── main.py         # FastAPI entry point
 │   └── ...
 │
 │── frontend/           # UI (HTML, CSS, JS)
-│── run.py              # App runner
+│── run.py              # Application runner
 │── requirements.txt    # Dependencies
+│── .env.example        # Environment variable template
 ```
 
+## 🖥️ UI Preview
+
+### 💬 Chat Interface
+
+![Chat Interface](./assets/chat.png)
+
+> Main interaction screen where users send queries and receive responses from the AI agent.
+
 ---
+
+### 📜 Conversation History Sidebar
+
+![Sidebar](./assets/sidebar.png)
+
+> Sidebar displaying past conversations with the ability to reload sessions.
+
+---
+
+### 🔍 Query in Action
+
+![Query Example](./assets/query.png)
+
+> Example of a user query processed through the system with AI-generated output.
+
+---
+
+### ⚙️ System Flow (Optional Screenshot)
+
+![System Flow](./assets/flow.png)
+
+> Visual representation of how a query moves through middleware, graph execution, and response generation.
 
 ## ⚙️ Setup & Run
 
 ### 1. Clone the repository
 
 ```
-git clone https://github.com/yourusername/OmniQuery.git
+git clone https://github.com/Omm28/OmniQuery.git
 cd OmniQuery
 ```
 
@@ -80,27 +179,28 @@ python run.py
 
 ---
 
-## 🧪 Current Status
+## 🧪 Development Status
 
 This project is actively being developed as part of an AI engineering internship.
 
-### Planned Improvements
+### 🚧 Upcoming Enhancements
 
-- Convert workflow into a full agent architecture
+- Transition workflow into a full agent architecture
 - OAuth 2.0 authentication
-- Integration of ORM for database management
-- Git version control improvements
+- Integration of ORM for structured database access
+- API testing with Postman collections
+- Improved version control and release workflow
 
 ---
 
 ## 📌 Notes
 
-- `.env` is not included — use `.env.example` as reference
-- SQLite is used for local persistence
-- Designed to evolve into a modular, production-ready AI system
+- `.env` is excluded for security — use `.env.example`
+- SQLite is used for lightweight local persistence
+- Designed to evolve into a production-grade, modular AI system
 
 ---
 
 ## 📜 License
 
-This project is for educational and development purposes.
+This project is intended for educational and development purposes.
