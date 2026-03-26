@@ -7,6 +7,7 @@ AI-powered web search agent built using a local LLM stack (Ollama + LangGraph) w
 ## 🚀 Overview
 
 OmniQuery is a full-stack AI application that allows users to interact with a web search agent through a chat interface. It leverages local LLMs for query processing and uses a modular backend design to support extensibility and future enhancements.
+The system uses a graph-based execution model (LangGraph) to orchestrate query processing through modular nodes and middleware.
 
 ---
 
