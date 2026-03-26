@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OmniQuery</title>
+    <link rel="icon" type="image/png" href="/static/favicon3.png" />
+    <meta
+      name="description"
+      content="AI-powered agent that answers from its own knowledge or searches the web for real-time information."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+
+  <body>
+    <!-- Background glow -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <!-- APP LAYOUT -->
+    <div id="appLayout">
+      <!-- SIDEBAR -->
+      <div id="sidebar">
+        <div class="sidebar-top">
+          <button id="toggleSidebarBtn" class="sidebar-toggle">
+            <img
+              src="/static/favicon3.png"
+              alt="OmniQuery"
+              class="toggle-icon"
+            />
+          </button>
+          <button id="newChatBtn" class="new-chat-btn">
+            <span class="icon">+</span>
+            <span class="label">Start New Conversation</span>
+          </button>
+          <h3>Your Chats</h3>
+          <div id="historyList"></div>
+        </div>
+      </div>
+
+      <!-- MAIN APP -->
+      <div class="app-shell">
+        <!-- HEADER -->
+        <header class="header">
+          <div class="header-inner">
+            <div class="brand">
+              <div class="brand-icon">✦</div>
+              <div>
+                <h1 class="brand-title">OmniQuery</h1>
+                <p class="brand-sub">LangGraph Powered</p>
+              </div>
+            </div>
+
+            <div class="header-controls">
+              <button id="clearBtn" class="btn-ghost">Clear</button>
+
+              <div class="status-badge" id="statusBadge">
+                <span class="status-dot"></span>
+                <span id="statusText">Ready</span>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- CHAT AREA -->
+        <main class="chat-area">
+          <div class="welcome" id="welcome">
+            <h2 class="welcome-title">Ask anything</h2>
+            <p class="welcome-sub">
+              I’ll answer directly or search the web if needed.
+            </p>
+
+            <div class="suggestion-grid">
+              <button class="suggestion" data-query="What is TCP vs UDP?">
+                💡 TCP vs UDP
+              </button>
+              <button class="suggestion" data-query="Latest AI news">
+                🌐 AI news
+              </button>
+              <button class="suggestion" data-query="Reverse string in Python">
+                🐍 Python Reverse String
+              </button>
+              <button class="suggestion" data-query="Bitcoin price">
+                📈 BTC
+              </button>
+            </div>
+          </div>
+
+          <!-- Messages -->
+          <div id="messages" class="messages"></div>
+        </main>
+
+        <!-- INPUT -->
+        <footer class="input-bar">
+          <div class="input-inner">
+            <div class="input-wrap">
+              <textarea
+                id="queryInput"
+                class="query-input"
+                placeholder="Ask anything…"
+                rows="1"
+              ></textarea>
+
+              <button id="sendBtn" class="send-btn">↑</button>
+            </div>
+
+            <p class="input-hint">
+              Press Enter to send · Shift+Enter for newline
+            </p>
+          </div>
+        </footer>
+      </div>
+      <!-- end app-shell -->
+    </div>
+    <!-- end appLayout -->
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
