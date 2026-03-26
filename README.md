@@ -143,7 +143,7 @@ OmniQuery/
 
 ---
 
-### ⚙️ System Flow (Optional Screenshot)
+### ⚙️ System Flow
 
 ![System Flow](./assets/flow.png)
 
