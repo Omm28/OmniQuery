@@ -11,7 +11,6 @@ class QueryRequest(BaseModel):
     )
     conversation_id: Optional[str] = None
 
-
 class QueryResponse(BaseModel):
     answer: str = Field(..., description="The final answer to the user's query.")
     source: Literal["llm", "web_search", "moderation"] = Field(
@@ -19,7 +18,6 @@ class QueryResponse(BaseModel):
         description="Indicates whether the answer came from the LLM directly or from a web search.",
     )
     conversation_id: str = Field(..., description="The ID of the conversation.")
-
 
 class HealthResponse(BaseModel):
     status: str = "ok"

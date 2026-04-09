@@ -4,11 +4,9 @@ from starlette.types import ASGIApp, Scope, Receive, Send
 from starlette.responses import JSONResponse
 from app.middleware.wordlist import BANNED_WORDS
 
-
 def contains_profanity(text: str) -> bool:
     words = re.split(r"\W+", text.lower())
     return any(w in BANNED_WORDS for w in words)
-
 
 class ProfanityFilterMiddleware:
     def __init__(self, app: ASGIApp):
@@ -52,9 +50,9 @@ class ProfanityFilterMiddleware:
             )
             
             await response(scope, receive, send)
-            return  # 🔥 THIS MUST STOP EXECUTION
+            return  
 
-        # ✅ CLEAN → pass request forward
+        
         async def receive_again():
             return {
                 "type": "http.request",

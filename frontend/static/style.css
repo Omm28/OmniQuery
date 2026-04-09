@@ -67,28 +67,12 @@ body {
   min-height: 100dvh;
   overflow: hidden;
 }
-/* Aether Obsidian Sidebar Refinement */
-
-:root {
-  --sidebar-bg: rgba(9, 19, 40, 0.7);
-  --sidebar-border: rgba(186, 158, 255, 0.1);
-  --sidebar-accent: #ba9eff;
-  --text-primary: #dee5ff;
-  --text-secondary: #a3aac4;
-  --text-muted: #6b7280;
-  --surface-hover: rgba(25, 37, 64, 0.6);
-  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --glass-blur: 24px;
-}
-
 #appLayout {
   display: flex;
   height: 100vh;
   overflow: hidden;
-  background: #020617; /* Deepest blue/black baseline */
+  background: transparent;
 }
-
-
 /* ─────────────────────────────────────────────
    SIDEBAR BASE
 ───────────────────────────────────────────── */
@@ -96,9 +80,10 @@ body {
   width: 270px;
   flex-shrink: 0;
 
-  background: rgba(15, 23, 42, 0.75);
+  background: var(--surface);
   backdrop-filter: blur(20px);
-  border-right: 1px solid rgba(255,255,255,0.08);
+  -webkit-backdrop-filter: blur(20px);
+  border-right: 1px solid var(--border);
 
   padding: 20px 14px;
 
@@ -208,7 +193,7 @@ body {
 /* Hover */
 .new-chat-btn:hover {
   transform: translateY(-1px);
-  border-color: rgba(186, 158, 255, 0.4);
+  border-color: rgba(167, 139, 250, 0.4);
 }
 
 /* ─────────────────────────────────────────────
@@ -220,7 +205,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.12em;
 
-  color: var(--sidebar-accent);
+  color: var(--accent-1);
   opacity: 0.7;
 
   margin: 4px 6px;
@@ -248,10 +233,41 @@ body {
 
   cursor: pointer;
   transition: all 0.2s ease;
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
 
+.history-item-text {
+  flex: 1;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.delete-chat-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.history-item:hover .delete-chat-btn {
+  opacity: 1;
+}
+
+.delete-chat-btn:hover {
+  color: var(--red);
+  background: rgba(248, 113, 113, 0.15);
 }
 
 .history-item:hover {
@@ -262,10 +278,10 @@ body {
 .history-item.active {
   background: linear-gradient(
     135deg,
-    rgba(186, 158, 255, 0.15),
-    rgba(94, 44, 145, 0.05)
+    rgba(167, 139, 250, 0.15),
+    rgba(167, 139, 250, 0.05)
   );
-  border: 1px solid rgba(186, 158, 255, 0.25);
+  border: 1px solid rgba(167, 139, 250, 0.25);
   color: var(--text-primary);
 }
 
@@ -317,7 +333,7 @@ body {
 }
 
 #historyList::-webkit-scrollbar-thumb {
-  background: rgba(186, 158, 255, 0.1);
+  background: rgba(167, 139, 250, 0.2);
   border-radius: 10px;
 }
 

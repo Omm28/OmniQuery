@@ -3,7 +3,6 @@ import logging
 import sys
 from app.config import LOG_LEVEL
 
-
 def _build_logger(name: str = "web_search_agent") -> logging.Logger:
     logger = logging.getLogger(name)
 
@@ -23,6 +22,5 @@ def _build_logger(name: str = "web_search_agent") -> logging.Logger:
     logger.addHandler(handler)
 
     return logger
-
 
 logger = _build_logger()

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+
 """
 cli.py
 ------
@@ -16,13 +16,11 @@ so results are identical to what you'd get via POST /ask.
 import sys
 import argparse
 
-# Ensure the project root is on the path when running directly
 import os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from app.graph import agent_graph
 from app.logger import logger
-
 
 def run_query(query: str, verbose: bool = False) -> None:
     """Run the agent on a single query and print the result."""
@@ -50,7 +48,6 @@ def run_query(query: str, verbose: bool = False) -> None:
     if verbose:
         print("─" * 60)
 
-
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Web Search Agent CLI — ask any question.",
@@ -69,7 +66,6 @@ def main() -> None:
     )
     args = parser.parse_args()
     run_query(args.query, verbose=args.verbose)
-
 
 if __name__ == "__main__":
     main()

@@ -6,8 +6,7 @@ from app.config import OLLAMA_BASE_URL, OLLAMA_MODEL
 from app.logger import logger
 
 OLLAMA_GENERATE_URL = f"{OLLAMA_BASE_URL}/api/generate"
-REQUEST_TIMEOUT = 60  # seconds
-
+REQUEST_TIMEOUT = 60  
 
 def generateResponse(prompt: str) -> str:
 
@@ -39,7 +38,6 @@ def generateResponse(prompt: str) -> str:
     text = data.get("response", "")
     logger.debug("Ollama response | response_len=%d", len(text))
     return text.strip()
-
 
 def call_llm(
     system_prompt: str,
