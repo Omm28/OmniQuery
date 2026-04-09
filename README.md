@@ -17,7 +17,7 @@ It leverages local LLMs for query understanding and tool orchestration, maintain
 Running a local LLM and NLP anonymization requires specific hardware capabilities:
 
 - **RAM**: Minimum 16GB (32GB recommended for seamless multitasking).
-- **GPU (Optional but highly recommended)**: Running `llama3:8b` via Ollama is significantly faster on a dedicated GPU (e.g., NVIDIA RTX 3060/4060 with 8GB+ VRAM or Apple Silicon M-series). It can run on CPU, but generation will be slow.
+- **GPU (Optional but highly recommended)**: Running `llama3:8b` via Ollama is significantly faster on a dedicated GPU (e.g., NVIDIA RTX 3060/4060 with 8GB+ VRAM or Apple Silicon M-series). It can run on CPU, but generation will be slow. Older generation GPUs will work too, but will be slower
 - **Disk Space**: ~6-8GB for the NLP models and local LLM runtime.
 
 ---
